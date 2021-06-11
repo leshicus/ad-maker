@@ -1,0 +1,1 @@
+export const MAX_CONTENT_COUNT = 4
