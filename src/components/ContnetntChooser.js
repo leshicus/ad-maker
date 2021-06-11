@@ -6,6 +6,8 @@ import food from '../assets/images/food.png'
 import schema from '../assets/images/schema.png'
 import shmot from '../assets/images/shmot.png'
 import watch from '../assets/images/watch.png'
+import ded from '../assets/images/ded.png'
+import surf from '../assets/images/surf.png'
 import { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { MAX_CONTENT_COUNT } from '../constants'
@@ -13,18 +15,10 @@ import { Button } from './Button'
 import { Text, Block, Flex, ButtonContainer } from './ui'
 import { Modal } from './Modal'
 
-const images = { building, food, schema, shmot, watch }
+const images = { building, food, schema, shmot, watch, }
 
 const videos = {
-    first: {
-        url: 'https://dcdn.picsart.com/wve_hackathon_templ_1.mp4',
-        preview: ''
-    },
-
-    second: {
-        url: 'https://dcdn.picsart.com/wve_hackathon_templ_2.mp4',
-        preview: '',
-    }
+    ded, surf
 }
 
 const UploadBtn = styled.div`
@@ -71,6 +65,8 @@ const TypeSwitcherValueContainer = styled.div`
 const PreviewStyled = styled.div`
 width: 240px;
 height: 120px;
+margin-bottom: 12px;
+margin-right: 22px;
 border-radius: 12px;
 position: relative;
 border: 2px solid;
@@ -177,13 +173,13 @@ export const Content = ({ setContent, content, closeHandler }) => {
             <div style={{ height: '250px', width: '100%', overflow: 'hidden', 'overflow-y': 'scroll' }}>
 
                 {
-                    type === 'Images' && <Flex justify="space-between" wrap='wrap'>
+                    type === 'Images' && <Flex wrap='wrap'>
                         {Object.keys(images).map((key) => <Preview src={images[key]} key={key} selected={!!selected[key]} onClickHandler={() => selectItemHandler(key)} />)}
                     </Flex>
                 }
                 {
-                    type === 'Videos' && <Flex justify="space-between" wrap='wrap'>
-                        {Object.keys(videos).map((key) => <Preview src={videos[key].preview} key={key} selected={!!selected[key]} onClickHandler={() => selectItemHandler(key)} />)}
+                    type === 'Videos' && <Flex wrap='wrap'>
+                        {Object.keys(videos).map((key) => <Preview src={videos[key]} key={key} selected={!!selected[key]} onClickHandler={() => selectItemHandler(key)} />)}
                     </Flex>
                 }
             </div>

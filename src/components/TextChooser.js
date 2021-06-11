@@ -1,14 +1,7 @@
-import { useCallback, useState } from 'react'
-import styled from '@emotion/styled'
+import { useCallback } from 'react'
 import { MAX_CAPTION_COUNT, MAX_CAPTION_TEXT_LENGTH } from './../constants'
 
-const Text = styled.p`
-  font-family: 'Gilroy';
-  color: ${(props) => props.color};
-  line-height: ${(props) => props.lineHeight || '1.2em'};
-  font-size: ${(props) => props.fs || '24px'};
-  text-align: ${(props) => props.align || 'left'};
-`
+
 
 export const TextChooser = ({ value, handleSave, tags }) => {
   const handleChange = useCallback(
