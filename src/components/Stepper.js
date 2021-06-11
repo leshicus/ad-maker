@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { Fragment, useCallback, useState } from 'react'
 import { Button } from './Button'
 import { STEP_PREV, STEP_CURRENT, STEP_NEXT } from './../constants'
 import { StepLine } from './StepLine'
@@ -25,13 +25,13 @@ export const Stepper = ({ children, steps }) => {
       >
         {steps.map((item, i) => {
           return (
-            <>
+            <Fragment key={i}>
               {i === currentStep && (
                 <StepLine text={item} variant={STEP_CURRENT} />
               )}
               {i < currentStep && <StepLine text={item} variant={STEP_PREV} />}
               {i > currentStep && <StepLine text={item} variant={STEP_NEXT} />}
-            </>
+            </Fragment>
           )
         })}
       </div>

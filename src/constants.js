@@ -2,7 +2,6 @@ export const MAX_CONTENT_COUNT = 4
 export const MAX_CAPTION_COUNT = 3
 
 export const STEPS = [
-  'Questions',
   'Upload your conent',
   'Add text',
   'Choose style',
