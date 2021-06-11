@@ -1,6 +1,10 @@
 import styled from '@emotion/styled'
 import { Button } from './Button'
 import { ReactComponent as Download } from '../icons/download.svg'
+import facebook from '../assets/images/Facebook ad.png'
+import portrait1 from '../assets/images/Portrait 1.png'
+import portrait from '../assets/images/Portrait.png'
+import story from '../assets/images/Story.png'
 
 const Text = styled.p`
   font-family: 'Gilroy';
@@ -24,22 +28,10 @@ export const Preview = () => {
           width: 800,
         }}
       >
-        <VideoCard
-          text="Story"
-          src="https://dcdn.picsart.com/wve_hackathon_templ_1.mp4"
-        />
-        <VideoCard
-          text="Portrait"
-          src="https://dcdn.picsart.com/wve_hackathon_templ_2.mp4"
-        />
-        <VideoCard
-          text="Facebook post"
-          src="https://dcdn.picsart.com/wve_hackathon_templ_3.mp4"
-        />
-        <VideoCard
-          text="Square"
-          src="https://dcdn.picsart.com/wve_hackathon_templ_4.mp4"
-        />
+        <VideoCard text="Story" src={story} />
+        <VideoCard text="Portrait" src={portrait} />
+        <VideoCard text="Facebook post" src={facebook} />
+        <VideoCard text="Square" src={portrait1} />
       </div>
       <Button style={{ position: 'absolute', top: 490, right: 240 }}>
         Regenerate
@@ -53,12 +45,13 @@ export const Preview = () => {
 
 const VideoCard = ({ src, text }) => (
   <div style={{ display: 'flex', flexDirection: 'column' }}>
-    <video
+    <img
       src={src}
       style={{
         height: 200,
         marginBottom: 8,
       }}
+      alt="#"
     />
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <div style={{ fontSize: 14 }}>{text}</div>
