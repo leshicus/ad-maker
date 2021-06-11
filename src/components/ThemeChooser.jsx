@@ -6,7 +6,7 @@ import { ReactComponent as ArrowUp } from '../icons/arrow-up.svg'
 import { ColorPalette, Duration, Audio } from "../App"
 import Fun from '../assets/images/Fun.png'
 import dmx from '../assets/images/DMX.png'
-
+import { useClickAway } from 'react-use';
 
 
 
@@ -42,11 +42,15 @@ const DropdownListContainer = styled.div`
 `
 const DropDown = ({ value, children, src }) => {
     const [open, setIsOpen] = useState()
+    const ref = useRef(null);
+    useClickAway(ref, () => {
+        open && setIsOpen(false)
+    });
     useEffect(() => {
         setIsOpen(false)
     }, [value])
     return (
-        <Block position="relative" width='100%'>
+        <Block ref={ref} position="relative" width='100%'>
             <DropDownContainer>
                 <Flex align="center">
                     {src && <img src={src} alt="" style={{ marginRight: '12px', width: 36, height: 36 }} />}
@@ -153,7 +157,7 @@ export const ThemeChooser = ({ theme, changeTheme }) => {
                         Choose color palette
                     </Text>
                 </Block>
-                {console.log(theme.colorPalette)}
+
                 <DropDown value={theme.colorPalette} src={Colors[theme.colorPalette]}>
                     {
                         Object.values(ColorPalette).map(val =>

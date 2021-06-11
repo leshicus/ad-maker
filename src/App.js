@@ -33,7 +33,7 @@ function App() {
     }
   })
 
-  console.log('state', state)
+
   const length = Object.keys(state.questions).length
 
   return (

@@ -188,7 +188,7 @@ export const Content = ({ setContent, content, closeHandler }) => {
             <Block margin="30px 0 0 0" padding="16px" height="88px">
                 <Flex justify="space-between" align="center">
                     <Block>
-                        {console.log('------->selected<---------', selected)}
+
                         {Object.values(selected).map(item => <SelectedPreview key={item.src} src={item.src} />)}
                     </Block>
                     <Flex align="center">

@@ -22,7 +22,7 @@ export const Audio = {
 export const Main = ({ state, dispatch }) => {
 
 
-  console.log('state', state)
+
   const Titles = [
     { title: 'Add photo or video', subtitle: 'Choose color palette' },
     { title: 'Add captions', subtitle: 'Maximum 3 captions' },
