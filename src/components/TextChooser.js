@@ -84,11 +84,16 @@ const TextAreaBlock = ({ num, text, handleChange }) => {
 
 const TagsBlock = ({ tags, handleChange }) => {
   return (
-    <div>
-      {tags &&
-        tags.map((item, i) => (
-          <Tag key={i} text={tags[i]} handleChange={handleChange} />
-        ))}
+    <div
+      style={{ display: 'flex', height: '100%', fontSize: 12, marginTop: 12 }}
+    >
+      Example:
+      <div style={{ marginLeft: 12 }}>
+        {tags &&
+          tags.map((item, i) => (
+            <Tag key={i} text={tags[i]} handleChange={handleChange} />
+          ))}
+      </div>
     </div>
   )
 }
