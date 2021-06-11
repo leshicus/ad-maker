@@ -8,6 +8,7 @@ import { TextChooser } from './TextChooser'
 export const Main = () => {
   const [state, dispatch] = useReducer(reducer, {
     text: 0,
+    content: {}
   })
 
   useEffect(() => {
@@ -20,7 +21,9 @@ export const Main = () => {
         {(step) => {
           return (
             <>
-              {step === 0 && <ContentChooser />}
+              {step === 0 && <ContentChooser content={state.content} handleSave={(value) => {
+                dispatch({ type: 'saveContent', payload: value })
+              }} />}
               {step === 1 && (
                 <TextChooser
                   value={state.text}

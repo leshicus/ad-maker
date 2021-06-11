@@ -4,7 +4,7 @@ const reducer = (state, action) => {
     case 'saveContent': {
       return {
         ...state,
-        content: action.paylod,
+        content: action.payload,
       }
     }
     case 'saveText': {
