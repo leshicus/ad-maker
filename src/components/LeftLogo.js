@@ -1,5 +1,5 @@
-import logo from '../assets/images/leftLogo.png'
-import picsart from '../assets/images/picsArt.png'
+import logo from '../assets/images/LeftLogo.png'
+import picsart from '../assets/images/PicsArt.png'
 
 export const LeftLogo = () => (
   <div style={{ width: 284, height: '100%', minWidth: 284 }}>

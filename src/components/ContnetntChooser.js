@@ -1,6 +1,7 @@
 import { ReactComponent as Upload } from '../icons/upload.svg'
 import { ReactComponent as ArrowDown } from '../icons/arrow-down.svg'
 import { ReactComponent as Clear } from '../icons/clear.svg'
+import { ReactComponent as Texture } from '../icons/texture-editor.svg'
 import building from '../assets/images/building.png'
 import food from '../assets/images/food.png'
 import schema from '../assets/images/schema.png'
@@ -161,7 +162,8 @@ export const Content = ({ setContent, content, closeHandler }) => {
             if (Object.keys(selected).length === MAX_CONTENT_COUNT) {
                 return
             }
-            setSelected({ ...selected, [key]: { src: images[key], type, preview: images[key] } })
+            const src = type === 'Videos' ? videos[key] : images[key]
+            setSelected({ ...selected, [key]: { src, type, preview: src } })
         }
     }
 
@@ -170,7 +172,7 @@ export const Content = ({ setContent, content, closeHandler }) => {
             <Flex justify="flex-end">
                 <TypeSwitcher type={type} onChangeHandler={(value) => setType(value)} />
             </Flex>
-            <div style={{ height: '250px', width: '100%', overflow: 'hidden', 'overflow-y': 'scroll' }}>
+            <div style={{ height: '250px', width: '100%', overflow: 'hidden', overflowY: 'scroll' }}>
 
                 {
                     type === 'Images' && <Flex wrap='wrap'>
@@ -186,7 +188,8 @@ export const Content = ({ setContent, content, closeHandler }) => {
             <Block margin="30px 0 0 0" padding="16px" height="88px">
                 <Flex justify="space-between" align="center">
                     <Block>
-                        {Object.values(selected).map(item => <SelectedPreview src={item.src} />)}
+                        {console.log('------->selected<---------', selected)}
+                        {Object.values(selected).map(item => <SelectedPreview key={item.src} src={item.src} />)}
                     </Block>
                     <Flex align="center">
                         <Block padding='0 16px'>
@@ -242,11 +245,16 @@ export const ContentChooser = ({ content, handleSave }) => {
                 </Flex>
                 <Flex grow={1} direction="column">
                     {Object.values(content).map((item) => (
-                        <ContentContainer key={item.id}>
+                        <ContentContainer key={item.src} >
                             <ContentImagePreview src={item.preview} />
-                            <ButtonContainer>
-                                <Clear />
-                            </ButtonContainer>
+                            <Flex align="center">
+
+                                {item.type === 'Images' && <ButtonContainer><Texture /></ButtonContainer>}
+                                <Block padding="4px" />
+                                <ButtonContainer>
+                                    <Clear />
+                                </ButtonContainer>
+                            </Flex>
                         </ContentContainer>
                     ))}
                     {[...Array(count)].map((item) => (

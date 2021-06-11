@@ -2,7 +2,7 @@ import { Stepper } from './Stepper'
 import { STEPS, TAGS } from './../constants'
 import { ContentChooser } from './ContnetntChooser'
 import { useReducer } from 'react'
-import reducer from './reducer'
+
 import { TextChooser } from './TextChooser'
 import { ThemeChooser } from './ThemeChooser'
 import { Block, Text } from './ui'
@@ -19,28 +19,15 @@ export const Audio = {
   slon: 'у слона 2 пениса .mp3',
   nbn: 'naughty by nature - O.P.P.mp3'
 }
-export const Main = () => {
-  const [state, dispatch] = useReducer(reducer, {
-    content: {},
-    text: {},
-    questions: {
-      '0': 0,
-      '1': 0,
-    },
-    theme: {
-      duration: Duration[0],
-      audio: Audio.dmx,
-      style: ColorPalette.fun,
-      colorPalette: ColorPalette.graphic,
-    }
+export const Main = ({ state, dispatch }) => {
 
-  })
 
   console.log('state', state)
   const Titles = [
     { title: 'Add photo or video', subtitle: 'Choose color palette' },
     { title: 'Add captions', subtitle: 'Maximum 3 captions' },
     { title: 'Choose a theme' },
+    { title: 'Export for social platforms', subtitle: '' },
   ]
 
   return (

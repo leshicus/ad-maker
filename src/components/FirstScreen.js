@@ -1,7 +1,7 @@
 import background from '../assets/images/background.png'
 import styled from '@emotion/styled'
 import { Flex, Text } from './ui'
-import picsart from '../assets/images/picsArt.png'
+import picsart from '../assets/images/PicsArt.png'
 import { ReactComponent as Product } from '../icons/sewing-machine.svg'
 import { ReactComponent as Service } from '../icons/computer.svg'
 import { TAGS } from './../constants'

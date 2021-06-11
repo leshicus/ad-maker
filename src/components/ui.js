@@ -18,10 +18,12 @@ export const Block = styled.div`
 `
 
 export const Flex = styled.div`
+  
   display: flex;
   justify-content: ${(props) => props.justify || 'flex-start'};
   align-items: ${(props) => props.align || 'flex-start'};
   flex-grow: ${props => props.grow};
+  flex-shrink:${props => props.shrink};
   flex-direction: ${(props) => props.direction || 'row'};
   width: ${(props) => props.width || 'auto'};
   flex-wrap:${(props) => props.wrap};

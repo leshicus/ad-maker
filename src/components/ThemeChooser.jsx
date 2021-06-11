@@ -3,8 +3,19 @@ import { useState, useRef, useEffect } from "react"
 import { ReactComponent as ArrowDown } from '../icons/arrow-down.svg'
 import styled from '@emotion/styled'
 import { ReactComponent as ArrowUp } from '../icons/arrow-up.svg'
-import { ColorPalette, Duration, Audio } from "./Main"
+import { ColorPalette, Duration, Audio } from "../App"
+import Fun from '../assets/images/Fun.png'
+import dmx from '../assets/images/DMX.png'
 
+
+
+
+const Colors = {
+    Fun
+}
+const AudioImage = {
+    dmx,
+}
 const DropDownContainer = styled.div`
 height: 68px;
 width: 100%;
@@ -29,7 +40,7 @@ const DropdownListContainer = styled.div`
     overflow-y: scroll;
     
 `
-const DropDown = ({ value, children }) => {
+const DropDown = ({ value, children, src }) => {
     const [open, setIsOpen] = useState()
     useEffect(() => {
         setIsOpen(false)
@@ -37,9 +48,12 @@ const DropDown = ({ value, children }) => {
     return (
         <Block position="relative" width='100%'>
             <DropDownContainer>
-                <Text fs="14px">
-                    {value}
-                </Text>
+                <Flex align="center">
+                    {src && <img src={src} alt="" style={{ marginRight: '12px', width: 36, height: 36 }} />}
+                    <Text fs="14px">
+                        {value}
+                    </Text>
+                </Flex>
                 <ButtonContainer onClick={() => setIsOpen(!open)}>
                     {open ? <ArrowUp /> : <ArrowDown />}
                 </ButtonContainer>
@@ -88,7 +102,7 @@ const Item = ({ children, onClickHandler }) => {
     const [hoverRef, isHovered] = useHover();
 
     return <ItemStyled ref={hoverRef} isHovered={isHovered} onClick={() => onClickHandler()}>
-        <Flex>
+        <Flex align="center">
             {children}
         </Flex>
     </ItemStyled>
@@ -96,46 +110,51 @@ const Item = ({ children, onClickHandler }) => {
 export const ThemeChooser = ({ theme, changeTheme }) => {
     return (
         <Flex>
-            <Flex grow={1} direction="column">
-                <Block margin=" 0 0 12px 0">
-                    <Text fs="14px">
-                        Choose style
-                    </Text>
-                </Block>
-                <DropDown value={theme.style}>
-                    {
-                        Object.values(ColorPalette).map(val =>
-                            <Item onClickHandler={() => changeTheme('style', val)}>
-                                <Text fs="14px">{val}</Text>
-                            </Item>
+            <Block width='50%'>
 
-                        )
-                    }
-                </DropDown>
-                <Block margin=" 10px" />
-                <Block margin=" 0 0 12px 0">
-                    <Text fs="14px">
-                        Choose duration
-                    </Text>
-                </Block>
-                <DropDown value={`${theme.duration}${' '}sec`}>
-                    {
-                        Duration.map(val =>
-                            <Item key={val} onClickHandler={() => changeTheme('duration', val)}>
-                                <Text fs="14px">{val}{' '}sec</Text>
-                            </Item>
 
-                        )
-                    }
-                </DropDown>
-            </Flex>
-            <Flex grow={1} direction="column">
+                <Flex grow={1} shrink={1} direction="column">
+                    <Block margin=" 0 0 12px 0">
+                        <Text fs="14px">
+                            Choose style
+                        </Text>
+                    </Block>
+                    <DropDown value={theme.style} src={Colors[theme.style]}>
+                        {
+                            Object.values(ColorPalette).map(val =>
+                                <Item onClickHandler={() => changeTheme('style', val)}>
+                                    <Text fs="14px">{val}</Text>
+                                </Item>
+
+                            )
+                        }
+                    </DropDown>
+                    <Block margin=" 10px" />
+                    <Block margin=" 0 0 12px 0">
+                        <Text fs="14px">
+                            Choose duration
+                        </Text>
+                    </Block>
+                    <DropDown value={`${theme.duration}${' '}sec`}>
+                        {
+                            Duration.map(val =>
+                                <Item key={val} onClickHandler={() => changeTheme('duration', val)}>
+                                    <Text fs="14px">{val}{' '}sec</Text>
+                                </Item>
+
+                            )
+                        }
+                    </DropDown>
+                </Flex>
+            </Block>
+            <Flex grow={1} shrink={1} direction="column">
                 <Block margin=" 0 0 12px 0">
                     <Text fs="14px">
                         Choose color palette
                     </Text>
                 </Block>
-                <DropDown value={theme.colorPalette}>
+                {console.log(theme.colorPalette)}
+                <DropDown value={theme.colorPalette} src={Colors[theme.colorPalette]}>
                     {
                         Object.values(ColorPalette).map(val =>
                             <Item onClickHandler={() => changeTheme('colorPalette', val)}>
@@ -151,11 +170,12 @@ export const ThemeChooser = ({ theme, changeTheme }) => {
                         Choose audio
                     </Text>
                 </Block>
-                <DropDown value={theme.audio}>
+                <DropDown value={theme.audio.title} src={AudioImage[theme.audio.id]}>
                     {
                         Object.values(Audio).map(val =>
-                            <Item onClickHandler={() => changeTheme('audio', val)}>
-                                <Text fs="14px">{val}</Text>
+                            <Item onClickHandler={() => changeTheme('audio', val.id)}>
+
+                                <Text fs="14px">{Audio[val.id].title}</Text>
                             </Item>
 
                         )

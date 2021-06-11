@@ -6,18 +6,9 @@ import portrait1 from '../assets/images/Portrait 1.png'
 import portrait from '../assets/images/Portrait.png'
 import story from '../assets/images/Story.png'
 
-const Text = styled.p`
-  font-family: 'Gilroy';
-  color: ${(props) => props.color};
-  line-height: ${(props) => props.lineHeight || '1.2em'};
-  font-size: ${(props) => props.fs || '24px'};
-  text-align: ${(props) => props.align || 'left'};
-`
-
 export const Preview = () => {
   return (
     <>
-      <Text color={'#333'}>Export for social platforms</Text>
       <div
         style={{
           display: 'grid',
@@ -25,26 +16,26 @@ export const Preview = () => {
           gridAutoFlow: 'column',
           height: 250,
           overflow: 'scroll',
-          width: 800,
+          margin: '0 auto',
         }}
       >
-        <VideoCard text="Story" src={story} />
-        <VideoCard text="Portrait" src={portrait} />
-        <VideoCard text="Facebook post" src={facebook} />
-        <VideoCard text="Square" src={portrait1} />
+        <VideoCard text="Story" width={112} src={story} />
+        <VideoCard text="Portrait" width={160} src={portrait} />
+        <VideoCard text="Facebook post" width={360} src={facebook} />
+        <VideoCard text="Square" width={200} src={portrait1} />
       </div>
-      <Button style={{ position: 'absolute', top: 490, right: 240 }}>
+      <Button style={{ position: 'absolute', top: 546, right: 240 }}>
         Regenerate
       </Button>
-      <Button style={{ position: 'absolute', top: 490, right: 100 }}>
+      <Button style={{ position: 'absolute', top: 546, right: 100 }}>
         Download All
       </Button>
     </>
   )
 }
 
-const VideoCard = ({ src, text }) => (
-  <div style={{ display: 'flex', flexDirection: 'column' }}>
+const VideoCard = ({ src, text, width }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', width }}>
     <img
       src={src}
       style={{
