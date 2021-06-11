@@ -1,12 +1,11 @@
+import {LeftLogo} from './components/LeftLogo'
+import {Main} from './components/Main'
+
 function App() {
   return (
     <div style={{height: '100%', display: 'flex'}}>
-      <div style={{width: 284}}>
-        left
-      </div>
-      <div>
-        content
-      </div>
+      <LeftLogo />
+      <Main />
     </div>
   );
 }
