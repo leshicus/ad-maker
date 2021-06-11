@@ -14,6 +14,7 @@ export const Block = styled.div`
     margin:${props => props.margin};
     width:${props => props.width};
     position: ${props => props.position};
+    background: ${props => props.bg}
 `
 
 export const Flex = styled.div`

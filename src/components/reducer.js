@@ -23,6 +23,15 @@ const reducer = (state, action) => {
         },
       }
     }
+    case 'changeTheme': {
+      return {
+        ...state,
+        theme: {
+          ...state.theme,
+          [action.payload.id]: action.payload.value
+        },
+      }
+    }
 
     default:
       break

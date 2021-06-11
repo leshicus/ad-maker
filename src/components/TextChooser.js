@@ -20,10 +20,7 @@ export const TextChooser = ({ value, handleSave, tags }) => {
 
   return (
     <>
-      <Text color={'#333'}>Add captions</Text>
-      <Text color={'#BCC0D1'} fs={'14px'}>
-        Maximum 3 captions
-      </Text>
+
       <div style={{}}>
         <div style={{ display: 'grid', columnGap: 10, gridAutoFlow: 'column' }}>
           {[...Array(MAX_CAPTION_COUNT)].map((item, i) => (

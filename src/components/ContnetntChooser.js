@@ -15,7 +15,17 @@ import { Modal } from './Modal'
 
 const images = { building, food, schema, shmot, watch }
 
+const videos = {
+    first: {
+        url: 'https://dcdn.picsart.com/wve_hackathon_templ_1.mp4',
+        preview: ''
+    },
 
+    second: {
+        url: 'https://dcdn.picsart.com/wve_hackathon_templ_2.mp4',
+        preview: '',
+    }
+}
 
 const UploadBtn = styled.div`
   border: 1px dashed #dcdde9;
@@ -81,6 +91,9 @@ left: 12px;
     background: #5A00EE;
     margin:auto;
 }
+div{
+
+}
 `
 const SelectedPreview = styled.img`
     width: 100px;
@@ -95,6 +108,7 @@ const Preview = ({ src, selected, onClickHandler }) => <PreviewStyled selected={
     <div />
     {selected && <span />}
     <img src={src} alt="#" />
+
 </PreviewStyled>
 
 
@@ -167,6 +181,11 @@ export const Content = ({ setContent, content, closeHandler }) => {
                         {Object.keys(images).map((key) => <Preview src={images[key]} key={key} selected={!!selected[key]} onClickHandler={() => selectItemHandler(key)} />)}
                     </Flex>
                 }
+                {
+                    type === 'Videos' && <Flex justify="space-between" wrap='wrap'>
+                        {Object.keys(videos).map((key) => <Preview src={videos[key].preview} key={key} selected={!!selected[key]} onClickHandler={() => selectItemHandler(key)} />)}
+                    </Flex>
+                }
             </div>
             <Block margin="30px 0 0 0" padding="16px" height="88px">
                 <Flex justify="space-between" align="center">
@@ -201,7 +220,7 @@ export const ContentChooser = ({ content, handleSave }) => {
     }, [content])
     return (
         <>
-            <Text color={'#333'}>Add photo or video</Text>
+
 
             <div style={{ position: 'relative' }}>
                 {isShown && <Modal title="Stock" onClose={() => setIsShown(false)}>
@@ -211,9 +230,7 @@ export const ContentChooser = ({ content, handleSave }) => {
 
                 </Modal>}
             </div>
-            <Text color={'#BCC0D1'} fs={'14px'}>
-                Maximum 4 media types
-            </Text>
+
             <Flex>
                 <Flex grow={1}>
                     <UploadBtn onClick={() => setIsShown(true)}>
