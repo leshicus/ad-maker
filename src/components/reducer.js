@@ -1,6 +1,13 @@
 const reducer = (state, action) => {
-  console.log(state, action)
+  console.log('reducer payload', action.payload)
+
   switch (action.type) {
+    case 'saveQuestions': {
+      return {
+        ...state,
+        questions: { ...state.questions, ...action.payload },
+      }
+    }
     case 'saveContent': {
       return {
         ...state,
@@ -10,7 +17,10 @@ const reducer = (state, action) => {
     case 'saveText': {
       return {
         ...state,
-        text: action.payload,
+        text: {
+          ...state.text,
+          ...action.payload,
+        },
       }
     }
 

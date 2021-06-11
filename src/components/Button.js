@@ -7,7 +7,7 @@ export const Button = ({ handler, children, color, bg }) => (
       padding: '10px 20px',
       color: color || '#535771',
       fontWeight: 'bold',
-      background: bg || 'white'
+      background: bg || 'white',
     }}
   >
     {children}
