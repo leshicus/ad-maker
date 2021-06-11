@@ -2,7 +2,6 @@ export const MAX_CONTENT_COUNT = 4
 export const MAX_CAPTION_COUNT = 3
 
 export const STEPS = [
-  'Questions',
   'Upload your conent',
   'Add text',
   'Choose style',
@@ -45,16 +44,17 @@ export const TAGS = {
     name: 'Special Sale',
     children: [
       [
+        'Holiday Sale',
         'Flash Sale',
         'Last Chance Sale',
         'Exclusive Sale',
-        'Holiday Sale',
         'Black Friday',
         'Weekend Sale',
         'Christmas Sale',
         'Summer Sale',
       ],
       [
+        'Up tp 50% off',
         'Final Sale',
         'Buy One, Get…',
         '20% Off',
@@ -66,6 +66,7 @@ export const TAGS = {
         'Last Chance',
       ],
       [
+        'Get Now',
         'Expires Soon',
         'Limited Time Offer',
         'Offer Ends Soon',

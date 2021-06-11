@@ -6,7 +6,7 @@ import reducer from './reducer'
 import { TextChooser } from './TextChooser'
 import { ThemeChooser } from './ThemeChooser'
 import { Block, Text } from './ui'
-
+import { Preview } from './Preview'
 
 export const ColorPalette = {
   graphic: 'Graphic',
@@ -73,6 +73,7 @@ export const Main = () => {
               {step === 2 && <ThemeChooser theme={state.theme} changeTheme={(id, value) => {
                 dispatch({ type: 'changeTheme', payload: { id, value } })
               }} />}
+              {step === 3 && <Preview />}
             </>
           )
         }}
@@ -81,42 +82,4 @@ export const Main = () => {
   )
 }
 
-const Questions = ({ value, handleSave }) => {
-  return (
-    <div>
-      <div>
-        <label for="question_1">What are you promoting:</label>
-        <select
-          id="question_1"
-          onChange={(e) => {
-            handleSave({ '0': e.target.value })
-          }}
-          value={value[0]}
-        >
-          <option value="0" selected={value[0]}>
-            Product
-          </option>
-          <option value="1" selected={value[0]}>
-            Service
-          </option>
-        </select>
-      </div>
-      <div>
-        <label for="question_2">The goal of the promotion:</label>
-        <select
-          id="question_2"
-          onChange={(e) => {
-            handleSave({ '1': e.target.value })
-          }}
-          value={value[1]}
-        >
-          {Object.values(TAGS).map((item, i) => (
-            <option value={String(i)} selected={value[1]}>
-              {item.name}
-            </option>
-          ))}
-        </select>
-      </div>
-    </div>
-  )
-}
+
