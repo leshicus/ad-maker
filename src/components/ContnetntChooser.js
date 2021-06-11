@@ -1,8 +1,8 @@
-import { ReactComponent as Upload } from './icons/upload.svg'
+import { ReactComponent as Upload } from '../icons/upload.svg'
 import { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 
-import { MAX_CONTENT_COUNT } from './constants'
+import { MAX_CONTENT_COUNT } from '../constants'
 
 
 const Text = styled.p`
