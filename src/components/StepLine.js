@@ -16,7 +16,7 @@ export const StepLine = ({ text, variant }) => {
       <div>{text}</div>
       <div
         style={{
-          border: '1px solid white',
+          border: `1px solid ${color}}`,
           height: 4,
           background: color,
           marginTop: 8,
