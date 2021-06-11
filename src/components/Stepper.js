@@ -15,7 +15,13 @@ export const Stepper = ({ children, steps }) => {
   }, [currentStep, steps])
 
   return (
-    <div style={{ height: '100%', padding: '112px 50px 50px 50px' }}>
+    <div
+      style={{
+        height: '100%',
+        padding: '112px 50px 50px 50px',
+        position: 'relative',
+      }}
+    >
       <div
         style={{
           display: 'grid',

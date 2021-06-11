@@ -1,7 +1,7 @@
 import { Stepper } from './Stepper'
 import { STEPS, TAGS } from './../constants'
 import { ContentChooser } from './ContnetntChooser'
-
+import { Preview } from './Preview'
 import { TextChooser } from './TextChooser'
 
 export const Main = ({ state, dispatch }) => {
@@ -29,6 +29,8 @@ export const Main = ({ state, dispatch }) => {
                   tags={TAGS[state.questions['1']].children}
                 />
               )}
+
+              {step === 3 && <Preview />}
             </>
           )
         }}

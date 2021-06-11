@@ -2,7 +2,7 @@ import logo from '../assets/images/leftLogo.png'
 import picsart from '../assets/images/picsArt.png'
 
 export const LeftLogo = () => (
-  <div style={{ width: 284, height: '100%' }}>
+  <div style={{ width: 284, height: '100%', minWidth: 284 }}>
     <img
       src={picsart}
       alt=""

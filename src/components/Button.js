@@ -1,4 +1,4 @@
-export const Button = ({ handler, children, color, bg }) => (
+export const Button = ({ handler, children, color, bg, style }) => (
   <button
     onClick={handler}
     style={{
@@ -8,6 +8,7 @@ export const Button = ({ handler, children, color, bg }) => (
       color: color || '#535771',
       fontWeight: 'bold',
       background: bg || 'white',
+      ...style,
     }}
   >
     {children}
